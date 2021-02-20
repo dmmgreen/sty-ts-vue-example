@@ -1,18 +1,21 @@
 <template>
   <div>
-    layout
+    <div>
+      <navbar/>
+    </div>
     <app-main />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { AppMain } from './components'
+import { AppMain, Navbar } from './components'
 
 @Component({
   name: 'Layout',
   components: {
-    AppMain
+    AppMain,
+    Navbar
   }
 })
 export default class extends Vue {

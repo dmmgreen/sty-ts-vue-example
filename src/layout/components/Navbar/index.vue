@@ -1,5 +1,7 @@
 <template>
-  <div class="navbar">
+  <div>
+    <div class="navbar">
+
     <!-- hamburger -->
     <hamburger id="hamburger-container" class="hamburger-container"></hamburger>
     <!-- 右边菜单 -->
@@ -29,16 +31,20 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    </div>
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container"></breadcrumb>
   </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import Hamburger from '@/components/Hamburger/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 
 @Component({
   name: 'Navbar',
   components: {
-    Hamburger
+    Hamburger,
+    Breadcrumb
   }
 })
 export default class extends Vue {

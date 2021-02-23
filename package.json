@@ -5,11 +5,12 @@
   "description": "study from https://github.com/armour/vue-typescript-admin-template",
   "author": "",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "concurrently \"npm:mock\" \"vue-cli-service serve\"",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "svg": "vsvg -s ./src/icon/svg -t ./src/icons/components --ext ts --es6"
+    "svg": "vsvg -s ./src/icon/svg -t ./src/icons/components --ext ts --es6",
+    "mock": "cd mock && ts-node-dev mock-server.ts"
   },
   "main": "index.js",
   "dependencies": {
@@ -26,8 +27,13 @@
     "vuex-module-decorators": "^1.0.1"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.10",
+    "@types/faker": "^5.1.7",
     "@types/js-cookie": "^2.2.6",
+    "@types/morgan": "^1.9.2",
     "@types/nprogress": "^0.2.0",
+    "@types/yamljs": "^0.2.31",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -40,21 +46,29 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^5.0.2",
     "axios": "^0.21.1",
+    "compression": "^1.7.4",
+    "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-vue": "^6.2.2",
+    "faker": "^5.4.0",
     "js-cookie": "^2.2.1",
+    "morgan": "^1.10.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",
+    "swagger-routes-express": "^3.3.0",
+    "ts-node-dev": "^1.1.1",
     "typescript": "~3.9.3",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-svgicon": "^3.2.9",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "yamljs": "^0.3.0"
   },
   "eslintConfig": {
     "root": true,

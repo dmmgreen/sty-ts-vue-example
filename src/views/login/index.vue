@@ -50,11 +50,8 @@ export default class extends Vue {
       if (valid) {
         this.loading = false
         await UserModule.Login(this.loginForm)
-        console.log('success')
         this.$router.push({
           path: '/'
-        }).catch(err => {
-          console.log(err)
         })
       }
     })

@@ -31,23 +31,30 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { Form } from 'element-ui'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   name: 'Login'
 })
 export default class extends Vue {
   private loginForm ={
-    username: '',
-    password: ''
+    username: 'admin',
+    password: '111111'
   }
 
   private loading= false
   private passwordType = 'password'
 
   private handleLogin() {
-    (this.$refs.loginForm as Form).validate((valid) => {
+    (this.$refs.loginForm as Form).validate(async(valid: boolean) => {
       if (valid) {
         this.loading = false
+        await UserModule.Login(this.loginForm)
+        this.$router.push({
+          path: '/'
+        }).catch(err => {
+          console.log(err)
+        })
       }
     })
   }

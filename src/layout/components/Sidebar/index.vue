@@ -1,8 +1,15 @@
 <template>
   <div>
+    <sidebar-logo
+      :collapse="isCollapse"></sidebar-logo>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu>
-        <sidebar-item></sidebar-item>
+        <sidebar-item
+          v-for="route in routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+          :is-collapse="isCollapse"></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -10,14 +17,30 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import SidebarItem from './SidebarItem.vue'
+import SidebarLogo from './SidebarLogo.vue'
+import variables from '@/styles/_variables.scss'
+import { PermissionModule } from '@/store/modules/permission'
 
 @Component({
   name: 'Sidebar',
   components: {
-    SidebarItem
+    SidebarItem,
+    SidebarLogo
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+  get routes() {
+    return PermissionModule.routes
+  }
+
+  get variables() {
+    return variables
+  }
+
+  get isCollapse() {
+    return false
+  }
+}
 </script>
 <style lang="scss">
 .sidebar-container {

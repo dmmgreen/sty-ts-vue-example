@@ -15,6 +15,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.14.0",
+    "nprogress": "^0.2.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
@@ -25,6 +26,7 @@
     "vuex-module-decorators": "^1.0.1"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -42,13 +44,13 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-svgicon": "^3.2.9",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",
     "typescript": "~3.9.3",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
+    "vue-svgicon": "^3.2.9",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

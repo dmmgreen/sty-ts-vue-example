@@ -9,6 +9,7 @@ import '@/styles/element-variables.scss'
 import '@/styles/index.scss'
 import SvgIcon from 'vue-svgicon'
 import '@/icons/components'
+import '@/permission'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI, {

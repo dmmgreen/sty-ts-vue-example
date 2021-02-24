@@ -1,9 +1,18 @@
 <template>
-  <div>
+  <div :class="{'has-logo': showLogo}">
     <sidebar-logo
+      v-if="showLogo"
       :collapse="isCollapse"></sidebar-logo>
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu>
+      <el-menu
+        :default-active="activeMenu"
+        :collapse="isCollapse"
+        :background-color="variables.menuBg"
+        :text-color="variables.menuText"
+        :active-text-color="menuActiveTextColor"
+        :unique-opened="false"
+        :collapse-transition="false"
+        mode="vertical">
         <sidebar-item
           v-for="route in routes"
           :key="route.path"
@@ -20,6 +29,7 @@ import SidebarItem from './SidebarItem.vue'
 import SidebarLogo from './SidebarLogo.vue'
 import variables from '@/styles/_variables.scss'
 import { PermissionModule } from '@/store/modules/permission'
+import { SettingsModule } from '@/store/modules/settings'
 
 @Component({
   name: 'Sidebar',
@@ -37,11 +47,34 @@ export default class extends Vue {
     return variables
   }
 
+  get showLogo() {
+    return SettingsModule.showSidebarLogo
+  }
+
+  get menuActiveTextColor() {
+    if (SettingsModule.sidebarTextTheme) {
+      return SettingsModule.theme
+    } else {
+      return variables.menuActiveText
+    }
+  }
+
+  get activeMenu() {
+    const route = this.$route
+    const { meta, path } = route
+    // if set path, the sidebar will highlight the path you set
+    if (meta.activeMenu) {
+      return meta.activeMenu
+    }
+    return path
+  }
+
   get isCollapse() {
     return false
   }
 }
 </script>
+
 <style lang="scss">
 .sidebar-container {
   // reset element-ui css
@@ -68,6 +101,7 @@ export default class extends Vue {
   }
 }
 </style>
+
 <style lang="scss" scoped>
 .el-scrollbar {
   height: 100%

@@ -14,7 +14,15 @@
         <span class="svg-container">
             <svg-icon name="password" />
           </span>
-        <el-input v-model="loginForm.password" :placeholder="`请输入${$t('login.password')}`"></el-input>
+        <el-input ref="password" name="password" :type="passwordType" v-model="loginForm.password" :placeholder="`请输入${$t('login.password')}`"
+        autocomplete="on"
+        @keyup.enter.native="handleLogin"></el-input>
+          <span
+            class="show-pwd"
+            @click="showPwd"
+          >
+            <svg-icon :name="passwordType === 'password' ? 'eye-off' : 'eye-on'" />
+          </span>
       </el-form-item>
       <el-button
         :loading="loading"
@@ -30,7 +38,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Form } from 'element-ui'
+import { Form, Input } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 
 @Component({
@@ -54,6 +62,17 @@ export default class extends Vue {
           path: '/'
         })
       }
+    })
+  }
+
+  private showPwd() {
+    if (this.passwordType === 'password') {
+      this.passwordType = ''
+    } else {
+      this.passwordType = 'password'
+    }
+    this.$nextTick(() => {
+      (this.$refs.password as Input).focus()
     })
   }
 }

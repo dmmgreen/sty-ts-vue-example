@@ -39,6 +39,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   name: 'Navbar',
@@ -49,7 +50,14 @@ import Breadcrumb from '@/components/Breadcrumb/index.vue'
 })
 export default class extends Vue {
   get avatar() {
-    return ''
+    return UserModule.avatar
+  }
+
+  private async logout() {
+    await UserModule.LogOut()
+    this.$router.push(`/login?redirect=${this.$route.fullPath}`).catch(err => {
+      console.warn(err)
+    })
   }
 }
 </script>

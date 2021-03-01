@@ -13,9 +13,25 @@ Vue.use(VueRouter)
 
 export const constantRoutes: Array<RouteConfig> = [
   {
+    path: '/redirect',
+    component: Layout,
+    meta: { hidden: true },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import(/* webpackChunkName: "redirect" */ '@/views/redirect/index.vue')
+      }
+    ]
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/index.vue')
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/error-page/404.vue'),
+    meta: { hidden: true }
   },
   {
     path: '/',

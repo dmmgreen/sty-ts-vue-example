@@ -121,7 +121,7 @@ export default class extends Vue {
     if (isExternal(this.basePath)) {
       return this.basePath
     }
-    return this.basePath + routePath
+    return this.basePath + '/' + routePath
   }
 }
 </script>

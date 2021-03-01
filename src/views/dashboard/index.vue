@@ -8,6 +8,5 @@ import { Vue, Component } from 'vue-property-decorator'
   name: 'Dashboard'
 })
 export default class extends Vue {
-
 }
 </script>

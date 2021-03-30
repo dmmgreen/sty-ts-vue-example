@@ -10,6 +10,7 @@ import '@/styles/index.scss'
 import SvgIcon from 'vue-svgicon'
 import '@/icons/components'
 import '@/permission'
+import * as filters from '@/filters'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI, {
@@ -20,6 +21,11 @@ Vue.use(SvgIcon, {
   tagName: 'svg-icon',
   defaultWidth: '1em',
   defaultHeight: '1em'
+})
+
+// Register global filter functions
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, (filters as { [key: string]: Function })[key])
 })
 
 new Vue({

@@ -47,7 +47,6 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
           NProgress.done()
         }
       } else {
-        console.log(to, _)
         next()
       }
     }

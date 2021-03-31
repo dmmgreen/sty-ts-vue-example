@@ -49,10 +49,43 @@ export const constantRoutes: Array<RouteConfig> = [
         }
       }
     ]
+  },
+  {
+    path: '/guide',
+    component: Layout,
+    redirect: '/guide/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import(/* webpackChunkName: "guide" */ '@/views/guide/index.vue'),
+        name: 'Guide',
+        meta: {
+          title: 'guide',
+          icon: 'guide',
+          noCache: true
+        }
+      }
+    ]
   }
 ]
 
 export const asyncRoutes: RouteConfig[] = [
+  {
+    path: '/icon',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import(/* webpackChunkName: "icons" */ '@/views/icons/index.vue'),
+        name: 'Icons',
+        meta: {
+          title: 'icons',
+          icon: 'icon',
+          noCache: true
+        }
+      }
+    ]
+  },
   componentsRouter,
   chartsRouter,
   nestedRouter,
